@@ -1,0 +1,17 @@
+<h2>Chat</h2>
+
+<ul id="messages">
+	<li *ngFor="let message of ( messages | async )">
+		{{ message }}
+	</li>
+</ul>
+
+
+<form onsubmit="return false">
+  <mat-form-field>
+  <input matInput autocomplete="off" name="text" [(ngModel)]="messageText">
+  </mat-form-field>
+	<button mat-raised-button (click)="chatSocket.next(messageText); messageText=''">
+    Send
+  </button>
+</form>
